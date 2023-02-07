@@ -1,2 +1,2 @@
-gcc -o main main.c llist.c task_util.c
+gcc -o main main.c llist.c task_util.c main_helper.c
 valgrind --leak-check=full ./main
