@@ -3,7 +3,13 @@
 #include "task_util.h"
 #include "main_helper.h"
 
-extern int running;
+int running = 1;
+void sig_handler(int signum)
+{
+    printf("\nCTRL+C. Exiting\n");
+    running = 0;
+    fclose(stdin);
+}
 
 int main(void)
 {
@@ -24,7 +30,7 @@ int main(void)
         print_possible();
         int task = ask_num();
         if (running == 0)
-            return 0;
+            break;
         switch (task) {
             case 1:
                 running = 0;

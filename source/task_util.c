@@ -5,13 +5,6 @@
 #include "llist.h"
 #include "task_util.h"
 
-int running = 1;
-void sig_handler(int signum)
-{
-    printf("\nCTRL+C. Exiting\n");
-    running = 0;
-}
-
 void file_open(char *file_path, struct Person *list)
 {
     FILE *file = NULL;
@@ -54,7 +47,7 @@ void print_possible()
     printf("%" MAXV(SPACING) "s\n", "Find address by name, surname, email, phone - 8");
 }
 
-void consume_buffer(char *buffer)
+/* void consume_buffer(char *buffer)
 {
     char *p;
     if (p = strchr(buffer, '\n')) {
@@ -63,30 +56,25 @@ void consume_buffer(char *buffer)
         scanf("%*[^\n]");
         scanf("%*c");
     }
-}
+} */
+
 int ask_num()
 {
-    struct sigaction sa;
-    sa.sa_handler = sig_handler;
-    sa.sa_flags = 0;
-    sigaction(SIGINT, &sa, NULL);
-
-    int task = 1;
+    int task = 0;
     const int sz = 5;
     char buffer[sz];
-    int c;
-    while (running) {
-        if (fgets(buffer, sz, stdin) == NULL) {
+    char *temp;
 
-        } else if (sscanf(buffer, "%d", &task) != 1 && running == 1) {
-            printf("Wrong input!\n");
-        } else {
-            return task;
-        }
-        if (running == 0)
-            return -1;
-        consume_buffer(buffer);
+    fgets(buffer, sz, stdin);
+    task = strtol(buffer, &temp, 10);
+    if (buffer == temp || *temp != '\n') {
+        return -1;
     }
+    int c;
+    if (strchr(buffer, '\n') == NULL) {
+        while ((c = getchar()) != '\n' && c != EOF);
+    }
+
     return task;
 }
 
@@ -103,7 +91,7 @@ char *ask_input()
         } else {
             return input;
         }
-        consume_buffer(buffer);
+        //consume_buffer(buffer);
     }
 }
 
