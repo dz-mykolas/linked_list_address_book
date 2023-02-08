@@ -8,12 +8,12 @@ void sig_handler(int signum)
 {
     printf("\nCTRL+C. Exiting\n");
     running = 0;
-    fclose(stdin);
 }
 
 int main(void)
 {
     struct sigaction sa;
+    memset(&sa, 0, sizeof(struct sigaction));
     sa.sa_handler = sig_handler;
     sigaction(SIGINT, &sa, NULL);
 
@@ -23,7 +23,7 @@ int main(void)
     strcat(file_path, file_name);
     
     struct Person *list = NULL;
-    file_open(file_path, list);
+    file_open(file_path, &list);
 
     while (running)
     {
@@ -45,16 +45,16 @@ int main(void)
                 task_add_at(&list);
                 break;
             case 5:
-                task_remove_at(list);
+                task_remove_at(&list);
                 break;
             case 6:
-                task_remove_all(list);
+                task_remove_all(&list);
                 break;
             case 7:
-                task_find_at(list);
+                task_find_at(&list);
                 break;
             case 8:
-                task_find_by(list);
+                task_find_by(&list);
                 break;
             default:
                 printf("Task does not exist!\n");

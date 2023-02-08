@@ -5,7 +5,9 @@
 #include "llist.h"
 #include "task_util.h"
 
-void file_open(char *file_path, struct Person *list)
+extern int running;
+
+void file_open(char *file_path, struct Person **list)
 {
     FILE *file = NULL;
 
@@ -13,9 +15,9 @@ void file_open(char *file_path, struct Person *list)
     if (file == NULL) {
         printf("Unable to open file\n");
     } else {
-        load_file(file, &list);
+        load_file(file, list);
         printf("Initial List: \n");
-        llist_print(list);
+        llist_print(*list);
         fclose(file);
     }
 }
@@ -47,16 +49,13 @@ void print_possible()
     printf("%" MAXV(SPACING) "s\n", "Find address by name, surname, email, phone - 8");
 }
 
-/* void consume_buffer(char *buffer)
+void consume_buffer(char *buffer)
 {
-    char *p;
-    if (p = strchr(buffer, '\n')) {
-        *p = '\0';
-    } else {
-        scanf("%*[^\n]");
-        scanf("%*c");
+    int c;
+    if (strchr(buffer, '\n') == NULL) {
+        while ((c = getchar()) != '\n' && c != EOF);
     }
-} */
+}
 
 int ask_num()
 {
@@ -65,15 +64,14 @@ int ask_num()
     char buffer[sz];
     char *temp;
 
-    fgets(buffer, sz, stdin);
+    if (fgets(buffer, sz, stdin) == NULL) {
+        return -1;
+    }
     task = strtol(buffer, &temp, 10);
     if (buffer == temp || *temp != '\n') {
         return -1;
     }
-    int c;
-    if (strchr(buffer, '\n') == NULL) {
-        while ((c = getchar()) != '\n' && c != EOF);
-    }
+    consume_buffer(buffer);
 
     return task;
 }
@@ -83,35 +81,48 @@ char *ask_input()
     char buffer[INPUT_SIZE + 2];
     char *input = malloc(sizeof(char) * INPUT_SIZE);
     int c;
-    while (1) {
-        if (fgets(buffer, INPUT_SIZE, stdin) == NULL) {
-            printf("Wrong input!\n");
-        } else if (sscanf(buffer, "%" MAXV(INPUT_SIZE) "s", input) != 1) {
-            printf("Wrong input!\n");
-        } else {
-            return input;
-        }
-        //consume_buffer(buffer);
+    if (fgets(buffer, INPUT_SIZE, stdin) == NULL) {
+        free(input);
+        return NULL;
+    } else if (sscanf(buffer, "%" MAXV(INPUT_SIZE) "s", input) != 1) {
+        consume_buffer(buffer);
+        free(input);
+        return NULL;
+    } else {
+        consume_buffer(buffer);
+        return input;
     }
+    
 }
 
 void ask_address_input(char *line)
 {
-    char *name;
-    char *surname;
-    char *email;
-    char *phone;
+    char *name = NULL;
+    char *surname = NULL;
+    char *email = NULL;
+    char *phone = NULL;
 
     printf("Enter name:\n");
     name = ask_input();
+    if (running == 0)
+        goto exit;
     printf("Enter surname:\n");
     surname = ask_input();
+    if (running == 0)
+        goto exit;
     printf("Enter email:\n");
     email = ask_input();
+    if (running == 0)
+        goto exit;
     printf("Enter phone:\n");
     phone = ask_input();
-    snprintf(line, 128, "%s,%s,%s,%s", name, surname, email, phone);
 
+    exit:
+    if (name == NULL || surname == NULL || email == NULL || phone == NULL) {
+        line[0] = '\0';
+    } else {
+        snprintf(line, 128, "%s,%s,%s,%s", name, surname, email, phone);
+    }
     free(name);
     free(surname);
     free(email);

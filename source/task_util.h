@@ -5,7 +5,7 @@
 #define MAXV(x) MAXV2(x)
 
 void sig_handler(int signum);
-void file_open(char *file_path, struct Person *list);
+void file_open(char *file_path, struct Person **list);
 void load_file(FILE *file, struct Person **list);
 void print_possible();
 void consume_buffer(char *buffer);

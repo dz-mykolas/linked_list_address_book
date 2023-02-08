@@ -16,7 +16,7 @@ struct Person {
 /* FUNCTIONS */
 struct Person *create_address_node(char *string);
 struct Person *create_node(char *name, char *surname, char *email, char *phone);
-int get_size(struct Person *list);
+int get_size(struct Person **list);
 void person_print(struct Person *p);
 void llist_print(struct Person *list);
 void llist_add_end(struct Person **list, struct Person *p);
