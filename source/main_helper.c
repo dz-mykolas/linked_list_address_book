@@ -58,7 +58,7 @@ void task_remove_all(struct Person **list)
     llist_remove_all(list);
 }   
 
-void task_find_at(struct Person **list)
+void task_find_at(struct Person *list)
 {
     int pos = 0;
     struct Person *new = NULL;
@@ -67,21 +67,26 @@ void task_find_at(struct Person **list)
     pos = ask_num();
     if (pos < 0)
         printf("Position can not be less than 0\n");
-    else if ((new = llist_find_at(*list, pos)) != NULL)
+    else if ((new = llist_find_at(list, pos)) != NULL)
         person_print(new);
 }
 
-void task_find_by(struct Person **list)
+void task_find_by(struct Person *list)
 {
     char *input = NULL;
     struct Person *new = NULL;
 
     printf("Input exact name/surname/email/phone: ");
     input = ask_input();
-    new = llist_find_by(*list, input);
+    if (input == NULL) {
+        printf("Error!");
+        return;
+    }
+    new = llist_find_by(list, input);
     if (new != NULL)
         llist_print(new);
     else 
         printf("Address not found!\n");
     free(input);
+    llist_remove_all(&new);
 }

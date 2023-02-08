@@ -51,10 +51,10 @@ int main(void)
                 task_remove_all(&list);
                 break;
             case 7:
-                task_find_at(&list);
+                task_find_at(list);
                 break;
             case 8:
-                task_find_by(&list);
+                task_find_by(list);
                 break;
             default:
                 printf("Task does not exist!\n");

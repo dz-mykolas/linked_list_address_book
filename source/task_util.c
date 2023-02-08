@@ -84,15 +84,14 @@ char *ask_input()
     if (fgets(buffer, INPUT_SIZE, stdin) == NULL) {
         free(input);
         return NULL;
-    } else if (sscanf(buffer, "%" MAXV(INPUT_SIZE) "s", input) != 1) {
+    }
+    if (sscanf(buffer, "%" MAXV(INPUT_SIZE) "s", input) != 1) {
         consume_buffer(buffer);
         free(input);
         return NULL;
-    } else {
-        consume_buffer(buffer);
-        return input;
     }
-    
+    consume_buffer(buffer);
+    return input;
 }
 
 void ask_address_input(char *line)

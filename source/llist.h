@@ -13,7 +13,6 @@ struct Person {
     struct Person *next;
 };
 
-/* FUNCTIONS */
 struct Person *create_address_node(char *string);
 struct Person *create_node(char *name, char *surname, char *email, char *phone);
 int get_size(struct Person **list);
