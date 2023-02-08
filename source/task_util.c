@@ -51,8 +51,8 @@ void print_possible()
 
 void consume_buffer(char *buffer)
 {
-    int c;
     if (strchr(buffer, '\n') == NULL) {
+        int c;
         while ((c = getchar()) != '\n' && c != EOF);
     }
 }
@@ -80,7 +80,6 @@ char *ask_input()
 {
     char buffer[INPUT_SIZE + 2];
     char *input = malloc(sizeof(char) * INPUT_SIZE);
-    int c;
     if (fgets(buffer, INPUT_SIZE, stdin) == NULL) {
         free(input);
         return NULL;

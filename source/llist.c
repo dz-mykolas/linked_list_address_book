@@ -126,8 +126,8 @@ void llist_remove_at(struct Person **list, int pos)
 void llist_remove_all(struct Person **list)
 {
     struct Person *head = *list;
-    struct Person *temp;
     while (head != NULL) {
+        struct Person *temp;
         temp = head;
         head = head->next;
         free(temp);
@@ -159,12 +159,9 @@ struct Person *llist_find_by(struct Person *list, char *s)
         char *surname = temp->surname;
         char *email = temp->email;
         char *phone = temp->phone;
-        if  (
-                strcmp(name, s)    == 0 
-            ||  strcmp(surname, s) == 0
-            ||  strcmp(email, s)   == 0
-            ||  strcmp(phone, s)   == 0
-            ) {
+        if (strcmp(name, s) == 0 || strcmp(surname, s) == 0 ||
+            strcmp(email, s) == 0 || strcmp(phone, s) == 0) 
+            {
             struct Person *new = NULL;
             new = create_node(name, surname, email, phone);
             llist_add_end(&new_list, new);
