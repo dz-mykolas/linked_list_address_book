@@ -41,7 +41,6 @@ void llist_print(struct Person *list)
     struct Person *temp = list;
     int i = 0;
     while (temp != NULL) {
-        printf("HAHAH");
         printf("%d: ", i);
         person_print(temp);
         temp = temp->next;
@@ -154,20 +153,26 @@ struct Person *llist_find_at(struct Person *list, int pos)
 struct Person *llist_find_by(struct Person *list, char *s)
 {
     struct Person *temp = list;
-    struct Person *new = NULL;
+    struct Person *new_list = NULL;
     while (temp != NULL) {
+        char *name = temp->name;
+        char *surname = temp->surname;
+        char *email = temp->email;
+        char *phone = temp->phone;
         if  (
-                strcmp(temp->name, s)    == 0 
-            ||  strcmp(temp->surname, s) == 0
-            ||  strcmp(temp->email, s)   == 0
-            ||  strcmp(temp->phone, s)   == 0
+                strcmp(name, s)    == 0 
+            ||  strcmp(surname, s) == 0
+            ||  strcmp(email, s)   == 0
+            ||  strcmp(phone, s)   == 0
             ) {
-            llist_add_end(&new, temp);
+            struct Person *new = NULL;
+            new = create_node(name, surname, email, phone);
+            llist_add_end(&new_list, new);
         }
         temp = temp->next;
     }
-    if (temp != NULL) {
-        return new;
+    if (new_list != NULL) {
+        return new_list;
     }
     return NULL;
 }
