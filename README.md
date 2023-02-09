@@ -1,4 +1,4 @@
-# linked_list_address_book
+# Address Book using Linked List
 
 ## Commands
 Build program
