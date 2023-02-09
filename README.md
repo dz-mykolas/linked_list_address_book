@@ -5,6 +5,10 @@ Build program
 ```
 make
 ```
+Start program
+```
+./test
+```
 Remove build files
 ```
 make clean
