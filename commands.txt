@@ -1,2 +1,0 @@
-valgrind --leak-check=full ./main
-cppcheck --enable=all ./
