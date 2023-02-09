@@ -5,7 +5,7 @@ Build program
 ```
 make
 ```
-Start program
+Start program (note: addresses.csv must be in user's home directory)
 ```
 ./test
 ```
