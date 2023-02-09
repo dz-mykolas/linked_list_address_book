@@ -5,6 +5,10 @@ Build program
 ```
 make
 ```
+Remove build files
+```
+make clean
+```
 Leak check
 ```
 valgrind --leak-check=full ./test
