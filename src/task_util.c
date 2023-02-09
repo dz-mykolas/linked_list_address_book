@@ -93,7 +93,7 @@ char *ask_input()
     return input;
 }
 
-void ask_address_input(char *line)
+struct Person *ask_address_input()
 {
     char *name = NULL;
     char *surname = NULL;
@@ -116,13 +116,13 @@ void ask_address_input(char *line)
     phone = ask_input();
 
     exit:
-    if (name == NULL || surname == NULL || email == NULL || phone == NULL) {
-        line[0] = '\0';
-    } else {
-        snprintf(line, 128, "%s,%s,%s,%s", name, surname, email, phone);
+    struct Person *new = NULL;
+    if (name != NULL && surname != NULL && email != NULL && phone != NULL) {
+        new = create_node(name, surname, email, phone);
     }
     free(name);
     free(surname);
     free(email);
     free(phone);
+    return new;
 }

@@ -10,36 +10,34 @@ void task_print(struct Person *list)
 
 void task_add_end(struct Person **list)
 {
-    char input[128];
-    struct Person *new = NULL;
+    struct Person *new = ask_address_input();
 
-    ask_address_input(input);
-    if (input[0] == '\0') {
+    if (new == NULL) {
         printf("Failed to create!\n");
         return;
     }
-    printf("New address: %s\n", input);
-    new = create_address_node(input);
+    printf("New address: %s,%s,%s,%s\n", new->name, new->surname, new->email, new->phone);
     llist_add_end(list, new);
 }
 
 void task_add_at(struct Person **list)
 {
-    char input[128];
-    struct Person *new = NULL;
-    int pos = 0;
+    struct Person *new = ask_address_input();
 
-    ask_address_input(input);
-    if (input[0] == '\0') {
+    if (new == NULL) {
         printf("Failed to create!\n");
         return;
     }
-    printf("New address: %s\n", input);
     printf("Input address position: ");
+    int pos = 0;
+    printf("New address: %s,%s,%s,%s\n", new->name, new->surname, new->email, new->phone);
     pos = ask_num();
-    new = create_address_node(input);
-    if (llist_add_at(list, new, pos) == 1) {
+    if (pos < 0) {
         free(new);
+        printf("Position less than 0\n");
+    }
+    else {
+        llist_add_at(list, new, pos);
     }
 }
 

@@ -11,5 +11,5 @@ void print_possible();
 void consume_buffer(char *buffer);
 int ask_num();
 char *ask_input();
-void ask_address_input(char *line);
+struct Person *ask_address_input();
 void do_task(struct Person **list, int task);
