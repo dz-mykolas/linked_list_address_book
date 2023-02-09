@@ -1,7 +1,7 @@
 # linked_list_address_book
 
 ## Commands
-###Leak check
+Leak check
 ```
 valgrind --leak-check=full ./test
 ```
