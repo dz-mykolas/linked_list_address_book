@@ -24,6 +24,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)	# $< same as $^ here (% generates mu
 $(OBJ_DIR): # create directories if does not exist
 	mkdir -p $@
 
-# Clean
+# CLEAN
 clean:
 	$(RM) -rv $(OBJ_DIR)
