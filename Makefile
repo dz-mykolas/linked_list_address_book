@@ -1,11 +1,8 @@
-# Directories
-SRC_DIR:=./src
 OBJ_DIR:=./obj
+LIB_DIR:=./lib
 
 # Files
 EXE:=test
-SRC:=$(wildcard $(SRC_DIR)/*.c)
-OBJ:=$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # Implicit Variables
 CC:=gcc
@@ -15,15 +12,17 @@ all: $(EXE)
 
 .PHONY: all clean
 
-$(EXE): $(OBJ)
-	$(CC) $^ -o $@
+$(EXE): src lib
+	$(CC) -o $@ lib/*.so obj/*.o
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)	# $< same as $^ here (% generates multiple rules for each file)
-	$(CC) -c $< -o $@
+src:
+	make -C src
 
-$(OBJ_DIR): # create directories if does not exist
-	mkdir -p $@
+lib:
+	make -c lib
 
-# CLEAN
+# Clean
 clean:
-	$(RM) -rv $(OBJ_DIR)
+	make clean -C lib
+	make clean -C src
+	$(RM) ./test
