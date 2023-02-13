@@ -17,11 +17,11 @@ lib: $(OBJ)
 #.PRECIOUS: %.o // without it object files gets removed
 
 %.so: %.o
-	$(CC) $(LDFLAGS) $< -o $@
+	$(CC) $(LDFLAGS) $< -o lib$@
 
 %.o: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
 # Clean
 clean-lib:
-	$(RM) ./*.o $(OBJ)
+	$(RM) ./*.o lib$(OBJ)

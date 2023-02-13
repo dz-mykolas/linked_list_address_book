@@ -1,28 +1,22 @@
+SRC_DIR:=./src
 OBJ_DIR:=./obj
 LIB_DIR:=./lib
 
 # Files
 EXE:=test
 
-# Implicit Variables
-CC:=gcc
-
 # MAKE
 all: $(EXE)
 
 .PHONY: all clean
 
-$(EXE): src lib
-	$(CC) -o $@ lib/*.so obj/*.o
-
-src:
-	make -C src
-
-lib:
-	make -c lib
+$(EXE):
+	$(MAKE) -C $(LIB_DIR)
+	$(MAKE) -C $(SRC_DIR)
+	$(CC) -L./lib -o $(EXE) ./obj/*.o -lllist
 
 # Clean
 clean:
-	make clean -C lib
-	make clean -C src
+	$(MAKE) clean-lib -C $(LIB_DIR)
+	$(MAKE) clean-src -C $(SRC_DIR)
 	$(RM) ./test
