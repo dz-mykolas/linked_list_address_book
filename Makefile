@@ -5,6 +5,7 @@ LIB_DIR:=./lib
 # Files
 EXE:=test
 
+LDFLAGS+=-L$(LIB_DIR) -Wl,-R$(LIB_DIR)
 # MAKE
 all: $(EXE)
 
@@ -13,7 +14,7 @@ all: $(EXE)
 $(EXE):
 	$(MAKE) -C $(LIB_DIR)
 	$(MAKE) -C $(SRC_DIR)
-	$(CC) -L./lib -o $(EXE) ./obj/*.o -lllist
+	$(CC) $(LDFLAGS) -o $(EXE) ./obj/*.o -lllist
 
 # Clean
 clean:
