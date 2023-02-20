@@ -1,23 +1,20 @@
 SRC_DIR:=./src
-OBJ_DIR:=./obj
 LIB_DIR:=./lib
 
-# Files
-EXE:=test
+.PHONY: all clean bin lib clean_lib clean_bin
 
-LDFLAGS+=-L$(LIB_DIR) -Wl,-R$(LIB_DIR)
-# MAKE
-all: $(EXE)
+all: lib bin
 
-.PHONY: all clean
-
-$(EXE):
+lib:
 	$(MAKE) -C $(LIB_DIR)
-	$(MAKE) -C $(SRC_DIR)
-	$(CC) $(LDFLAGS) -o $(EXE) ./obj/*.o -lllist
 
-# Clean
-clean:
-	$(MAKE) clean-lib -C $(LIB_DIR)
-	$(MAKE) clean-src -C $(SRC_DIR)
-	$(RM) ./test
+bin: lib
+	$(MAKE) -C $(SRC_DIR)
+
+clean_lib:
+	$(MAKE) -C $(LIB_DIR) clean
+
+clean_bin:
+	$(MAKE) -C $(SRC_DIR) clean
+
+clean: clean_lib clean_bin

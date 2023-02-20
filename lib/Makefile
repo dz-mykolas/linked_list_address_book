@@ -1,27 +1,14 @@
-# Directories
-SRC_DIR:=../
-
-# Files
+LIB:=liblist.so
 SRC:=$(wildcard *.c)
-OBJ:=$(SRC:.c=.so)
+OBJ:=$(SRC:.c=.o)
+CFLAGS:=-fPIC -shared
 
-# Implicit Variables
-CC:=gcc
-CFLAGS:=-c -fPIC
-LDFLAGS:=-shared
+.PHONY: all clean $(LIB)
 
-# MAKE
-lib: $(OBJ)
+all: $(LIB)
 
-.PHONY: lib clean
-#.PRECIOUS: %.o // without it object files gets removed
+$(LIB): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
 
-%.so: %.o
-	$(CC) $(LDFLAGS) $< -o lib$@
-
-%.o: %.c
-	$(CC) $(CFLAGS) $< -o $@
-
-# Clean
-clean-lib:
-	$(RM) ./*.o lib$(OBJ)
+clean:
+	$(RM) $(LIB) $(OBJ)
