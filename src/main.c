@@ -1,6 +1,3 @@
-#include <signal.h>
-#include "llist.h"
-#include "task_util.h"
 #include "main_helper.h"
 
 int running = 1;

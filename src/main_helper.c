@@ -1,6 +1,4 @@
-#include "llist.h"
 #include "main_helper.h"
-#include "task_util.h"
 
 void task_print(struct Person *list)
 {

@@ -1,0 +1,26 @@
+---
+:source:
+  :path: test
+  :file: test_create_node_address.c
+:successes:
+- :test: test_create_address_node_normal
+  :line: 14
+  :message: ''
+  :unity_test_time: 0
+:failures:
+- :test: test_create_address_node_overflow
+  :line: 31
+  :message: Expected 'nameddddddddddddddddddddddddd' Was 'nameddddddddddddddddddddddddd_surnameddddddd'
+  :unity_test_time: 0
+- :test: test_create_address_node_wrong
+  :line: 43
+  :message: Expected 'name' Was 'name    '
+  :unity_test_time: 0
+:ignores: []
+:counts:
+  :total: 3
+  :passed: 1
+  :failed: 2
+  :ignored: 0
+:stdout: []
+:time: 0.0010769510008685756

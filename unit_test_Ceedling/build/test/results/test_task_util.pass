@@ -1,0 +1,78 @@
+---
+:source:
+  :path: test
+  :file: test_task_util.c
+:successes:
+- :test: test_task_util_file_open_normal
+  :line: 57
+  :message: ''
+  :unity_test_time: 0
+- :test: test_task_util_file_open_no_file
+  :line: 71
+  :message: ''
+  :unity_test_time: 0
+- :test: test_task_util_file_open_existing_list
+  :line: 84
+  :message: ''
+  :unity_test_time: 0
+- :test: test_task_util_ask_num_normal
+  :line: 115
+  :message: ''
+  :unity_test_time: 0
+- :test: test_task_util_ask_num_wrong
+  :line: 121
+  :message: ''
+  :unity_test_time: 0
+- :test: test_task_util_ask_num_wrong2
+  :line: 127
+  :message: ''
+  :unity_test_time: 0
+- :test: test_task_util_ask_address_input_normal
+  :line: 135
+  :message: ''
+  :unity_test_time: 0
+- :test: test_task_util_ask_address_input_empty_all
+  :line: 146
+  :message: ''
+  :unity_test_time: 0
+- :test: test_task_util_ask_address_input_empty_middle
+  :line: 153
+  :message: ''
+  :unity_test_time: 0
+- :test: test_task_util_ask_address_input_too_many
+  :line: 160
+  :message: ''
+  :unity_test_time: 0
+- :test: test_task_util_ask_address_input_terminate_program
+  :line: 171
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 11
+  :passed: 11
+  :failed: 0
+  :ignored: 0
+:stdout:
+- 'Initial List: '
+- Unable to open file
+- 'Initial List: '
+- 'Enter name:'
+- 'Enter surname:'
+- 'Enter email:'
+- 'Enter phone:'
+- 'Enter name:'
+- 'Enter surname:'
+- 'Enter email:'
+- 'Enter phone:'
+- 'Enter name:'
+- 'Enter surname:'
+- 'Enter email:'
+- 'Enter phone:'
+- 'Enter name:'
+- 'Enter surname:'
+- 'Enter email:'
+- 'Enter phone:'
+- 'Enter name:'
+:time: 0.001132643999881111

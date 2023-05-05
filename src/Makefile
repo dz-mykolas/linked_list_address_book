@@ -2,7 +2,7 @@ BIN:=test
 SRC:=$(wildcard *.c)
 OBJ:=$(SRC:.c=.o)
 CPPFLAGS:=-I../lib
-LDFLAGS:=-L../lib -llist -Wl,-rpath ./lib
+LDFLAGS:=-L../lib -llist -Wl,-rpath ../lib
 
 .PHONY: all clean $(BIN)
 

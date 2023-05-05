@@ -1,0 +1,19 @@
+---
+src/llist.c:
+- TEST
+build/test/mocks/mock_llist.c:
+- TEST
+src/printf_mock.c:
+- TEST
+src/printf_custom.c:
+- TEST
+src/test_helpers.c:
+- TEST
+src/main_helper.c:
+- TEST
+src/task_util.c:
+- TEST
+build/test/mocks/mock_task_util.c:
+- TEST
+build/test/mocks/mock_stdio.c:
+- TEST

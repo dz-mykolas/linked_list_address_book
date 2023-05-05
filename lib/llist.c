@@ -2,17 +2,28 @@
 
 struct Person *create_address_node(char *string)
 {
-    char *name = strtok(string, DELIMITER);
-    char *surname = strtok(NULL, DELIMITER);
-    char *email = strtok(NULL, DELIMITER);
-    char *phone = strtok(NULL, DELIMITER);
+    const char *delim = DELIMITER;
+    char *str_copy, *token, *state;
+    char name[INPUT_SIZE], surname[INPUT_SIZE], email[INPUT_SIZE], phone[INPUT_SIZE];
 
-    char *ptr = strchr(phone, '\n');
-    if(ptr) {
-        *ptr = '\0'; 
+    str_copy = strdup(string);
+    if (!str_copy) {
+        return NULL;
+    }
+    
+    token = str_copy;
+    snprintf(name, 30, "%s", strsep(&token, delim));
+    snprintf(surname, 30, "%s", strsep(&token, delim));
+    snprintf(email, 30, "%s", strsep(&token, delim));
+    snprintf(phone, 30, "%s", strsep(&token, delim));
+    if (!name || !surname || !email || !phone) {
+        free(str_copy);
+        return NULL;
     }
 
     struct Person *person = create_node(name, surname, email, phone);
+    free(str_copy);
+
     return person;
 }
 
@@ -50,6 +61,10 @@ void llist_print(struct Person *list)
 
 void llist_add_end(struct Person **list, struct Person *p)
 {
+    if (!p) {
+        return;
+    }
+
     struct Person *temp = *list;
     if (temp == NULL) {
         *list = p;
@@ -64,6 +79,10 @@ void llist_add_end(struct Person **list, struct Person *p)
 
 void llist_add_at(struct Person **list, struct Person *p, int pos)
 {
+    if (!p) {
+        return;
+    }
+
     struct Person *temp = *list;
     if (pos == 0) {
         if (temp == NULL) {

@@ -1,0 +1,18 @@
+---
+:source:
+  :path: test
+  :file: test_main_helper.c
+:successes: []
+:failures: []
+:ignores:
+- :test: test_main_helper_NeedToImplement
+  :line: 20
+  :message: Need to Implement main_helper
+  :unity_test_time: 0
+:counts:
+  :total: 1
+  :passed: 0
+  :failed: 0
+  :ignored: 1
+:stdout: []
+:time: 0.001171924999653129

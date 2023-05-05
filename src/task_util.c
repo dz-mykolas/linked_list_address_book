@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <signal.h>
-#include "llist.h"
 #include "task_util.h"
-
-extern int running;
 
 void file_open(char *file_path, struct Person **list)
 {
@@ -95,6 +88,7 @@ char *ask_input()
 
 struct Person *ask_address_input()
 {
+    struct Person *new = NULL;
     char *name = NULL;
     char *surname = NULL;
     char *email = NULL;
@@ -116,7 +110,6 @@ struct Person *ask_address_input()
     phone = ask_input();
 
     exit:
-    struct Person *new = NULL;
     if (name != NULL && surname != NULL && email != NULL && phone != NULL) {
         new = create_node(name, surname, email, phone);
     }
