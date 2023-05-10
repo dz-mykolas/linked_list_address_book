@@ -35,6 +35,8 @@
     - -:test/support
   :source:
     - src/**
+  :include:
+    - build/test/preprocess/includes
   :support:
     - test/support
   :libraries: []

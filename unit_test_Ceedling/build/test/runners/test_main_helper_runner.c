@@ -13,7 +13,19 @@ char* GlobalOrderError;
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_main_helper_NeedToImplement(void);
+extern void test_main_task_print(void);
+extern void test_main_task_add_end_normal(void);
+extern void test_main_task_add_end_empty(void);
+extern void test_main_task_add_at_normal(void);
+extern void test_main_task_add_at_empty(void);
+extern void test_main_task_add_at_wrong(void);
+extern void test_main_task_remove_at_normal(void);
+extern void test_main_task_remove_at_wrong(void);
+extern void test_main_task_remove_all_normal(void);
+extern void test_main_task_find_at_normal(void);
+extern void test_main_task_find_at_wrong(void);
+extern void test_main_task_find_by_normal(void);
+extern void test_main_task_find_by_wrong(void);
 
 
 /*=======Mock Management=====*/
@@ -84,7 +96,19 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_main_helper.c");
-  run_test(test_main_helper_NeedToImplement, "test_main_helper_NeedToImplement", 18);
+  run_test(test_main_task_print, "test_main_task_print", 47);
+  run_test(test_main_task_add_end_normal, "test_main_task_add_end_normal", 55);
+  run_test(test_main_task_add_end_empty, "test_main_task_add_end_empty", 62);
+  run_test(test_main_task_add_at_normal, "test_main_task_add_at_normal", 70);
+  run_test(test_main_task_add_at_empty, "test_main_task_add_at_empty", 79);
+  run_test(test_main_task_add_at_wrong, "test_main_task_add_at_wrong", 85);
+  run_test(test_main_task_remove_at_normal, "test_main_task_remove_at_normal", 97);
+  run_test(test_main_task_remove_at_wrong, "test_main_task_remove_at_wrong", 105);
+  run_test(test_main_task_remove_all_normal, "test_main_task_remove_all_normal", 114);
+  run_test(test_main_task_find_at_normal, "test_main_task_find_at_normal", 122);
+  run_test(test_main_task_find_at_wrong, "test_main_task_find_at_wrong", 131);
+  run_test(test_main_task_find_by_normal, "test_main_task_find_by_normal", 145);
+  run_test(test_main_task_find_by_wrong, "test_main_task_find_by_wrong", 155);
 
   CMock_Guts_MemFreeFinal();
   return UnityEnd();

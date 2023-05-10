@@ -2,17 +2,78 @@
 :source:
   :path: test
   :file: test_main_helper.c
-:successes: []
-:failures: []
-:ignores:
-- :test: test_main_helper_NeedToImplement
-  :line: 20
-  :message: Need to Implement main_helper
+:successes:
+- :test: test_main_task_print
+  :line: 47
+  :message: ''
   :unity_test_time: 0
+- :test: test_main_task_add_end_normal
+  :line: 55
+  :message: ''
+  :unity_test_time: 0
+- :test: test_main_task_add_end_empty
+  :line: 62
+  :message: ''
+  :unity_test_time: 0
+- :test: test_main_task_add_at_normal
+  :line: 70
+  :message: ''
+  :unity_test_time: 0
+- :test: test_main_task_add_at_empty
+  :line: 79
+  :message: ''
+  :unity_test_time: 0
+- :test: test_main_task_add_at_wrong
+  :line: 85
+  :message: ''
+  :unity_test_time: 0
+- :test: test_main_task_remove_at_normal
+  :line: 97
+  :message: ''
+  :unity_test_time: 0
+- :test: test_main_task_remove_at_wrong
+  :line: 105
+  :message: ''
+  :unity_test_time: 0
+- :test: test_main_task_remove_all_normal
+  :line: 114
+  :message: ''
+  :unity_test_time: 0
+- :test: test_main_task_find_at_normal
+  :line: 122
+  :message: ''
+  :unity_test_time: 0
+- :test: test_main_task_find_at_wrong
+  :line: 131
+  :message: ''
+  :unity_test_time: 0
+- :test: test_main_task_find_by_normal
+  :line: 145
+  :message: ''
+  :unity_test_time: 0
+- :test: test_main_task_find_by_wrong
+  :line: 155
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
 :counts:
-  :total: 1
-  :passed: 0
+  :total: 13
+  :passed: 13
   :failed: 0
-  :ignored: 1
-:stdout: []
-:time: 0.001171924999653129
+  :ignored: 0
+:stdout:
+- 'New address: Name1,Surname1,Email1,Phone1'
+- Failed to create!
+- 'Input address position: New address: Name1,Surname1,Email1,Phone1'
+- Failed to create!
+- 'Input address position: New address: ,,,'
+- Position less than 0
+- 'Input address position: '
+- 'Input address position: Position less than 0'
+- Removed all!
+- 'Input address position: '
+- 'Input address position: Position can not be less than 0'
+- 'Input exact name/surname/email/phone: '
+- 'Input exact name/surname/email/phone: Error!'
+:time: 0.0014313860000356726

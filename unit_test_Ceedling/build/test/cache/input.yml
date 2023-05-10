@@ -29,7 +29,8 @@
   - src/**
   :support:
   - test/support
-  :include: []
+  :include:
+  - build/test/preprocess/includes
   :libraries: []
   :test_toolchain_include: []
   :release_toolchain_include: []

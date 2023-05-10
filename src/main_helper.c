@@ -41,10 +41,13 @@ void task_add_at(struct Person **list)
 
 void task_remove_at(struct Person **list)
 {
-    int pos = 0;
-
     printf("Input address position: ");
+    int pos = 0;
     pos = ask_num();
+    if (pos < 0) {
+        printf("Position less than 0\n");
+        return;
+    }
     llist_remove_at(list, pos);
 }
 
@@ -83,6 +86,7 @@ void task_find_by(struct Person *list)
         llist_print(new);
     else 
         printf("Address not found!\n");
+
     free(input);
     llist_remove_all(&new);
 }

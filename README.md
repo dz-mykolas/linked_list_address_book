@@ -21,3 +21,10 @@ Code analysis
 ```
 cppcheck --enable=all ./
 ```
+Unit test from project directory
+```
+cd ./unit_test_Ceedling/
+ceedling test:[test_file]
+ceedling test:test_llist.c
+ceedling test:all
+```
